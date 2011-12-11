@@ -244,7 +244,7 @@ module GoogleCheckout
           xml.text! @flat_rate_shipping[:price].to_s
         }
       else
-        xml.price(:currency => @currency) {
+        xml.price(:currency => currency) {
           xml.text! shipping_cost.to_s
         }
       end
@@ -252,7 +252,6 @@ module GoogleCheckout
 
     # Returns the shipping cost for the contents of the cart.
     def shipping_cost
-      currency = @currency
       shipping = @contents.inject(0) { |total,item|
         total + item[:regular_shipping].to_i
       }.to_s
