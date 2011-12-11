@@ -252,7 +252,7 @@ module GoogleCheckout
 
     # Returns the shipping cost for the contents of the cart.
     def shipping_cost
-      currency = 'USD'
+      currency = @currency
       shipping = @contents.inject(0) { |total,item|
         total + item[:regular_shipping].to_i
       }.to_s
